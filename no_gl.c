@@ -757,8 +757,8 @@ static void apply_address_mode(texture_t *texture, int32_t *t, int32_t *s)
         {
             *t = *t % texture->w;
             *s = *s % texture->h;
-            *t = (*t < 0) ? (1 - *t) : *t;
-            *s = (*s < 0) ? (1 - *s) : *s;
+            *t = (*t < 0) ? ((texture->w - 1) + *t) : *t;
+            *s = (*s < 0) ? ((texture->h - 1) + *s) : *s;
             break;
         }
         case ADDRESS_MODE_CLAMP:
